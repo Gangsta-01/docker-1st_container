@@ -5,8 +5,8 @@ services:
     image: redis
 
   web:
-    image: my-app:1.0
+    image: app:1.0
     ports:
-      - "5000:5000"
+      - "8080:3000"
     depends_on:
     - redis
