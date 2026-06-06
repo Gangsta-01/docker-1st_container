@@ -1,98 +1,68 @@
-# Dockerized Node.js + Redis Application
+# Docker First Container
 
-A simple Dockerized Node.js application that uses Redis for data storage and demonstrates containerized multi-service architecture using Docker Compose.
+## Overview
 
-## 🚀 Features
+This project demonstrates how to run a Node.js and Express application inside Docker and connect it to a Redis container using Docker Compose.
 
-* Node.js web application
-* Redis integration
-* Dockerized services
-* Docker Compose orchestration
-* Container networking
-* Environment-based configuration
-
-## 🛠️ Tech Stack
+## Technologies
 
 * Node.js
+* Express.js
 * Redis
 * Docker
 * Docker Compose
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
-.
-├── Dockerfile
-├── docker-compose.yml
-├── package.json
+docker-1st_container/
 ├── server.js
-└── README.md
+├── package.json
+├── Dockerfile
+└── docker-compose.yml
 ```
 
-## 🐳 Run with Docker Compose
-
-Clone the repository:
+## Build Docker Image
 
 ```bash
-git clone <repository-url>
-cd <project-folder>
+docker build -t app:1.0 .
 ```
 
-Start all services:
-
-```bash
-docker compose up --build
-```
-
-Run in detached mode:
+## Start Containers
 
 ```bash
 docker compose up -d
 ```
 
-Stop services:
+## Verify Running Containers
+
+```bash
+docker ps
+```
+
+## Access Application
+
+Open:
+
+```text
+http://localhost:8080
+```
+
+## Stop Containers
 
 ```bash
 docker compose down
 ```
 
-## 🌐 Access Application
+## Concepts Learned
 
-Open your browser:
-
-```text
-http://localhost:5000
-```
-
-## 🏗️ Docker Concepts Used
-
-* Custom Docker Image
-* Dockerfile
+* Docker Images
+* Docker Containers
+* Docker Networking
 * Docker Compose
-* Multi-Container Setup
-* Service Discovery
-* Container Networking
 * Port Mapping
-* Environment Variables
+* Container Communication
+* Node.js + Redis Integration
 
-## 📸 Screenshots
-
-Add screenshots of:
-
-* Running application
-* Docker containers
-* Docker Compose output
-
-## 🎯 Learning Outcome
-
-This project helped me understand:
-
-* Building Docker images
-* Running containers
-* Connecting services through Docker networks
-* Managing multi-container applications with Docker Compose
-* Integrating Node.js applications with Redis
-
-## 📄 License
-
-This project is for learning and educational purposes.
+```
+```
