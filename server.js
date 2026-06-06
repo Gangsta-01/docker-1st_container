@@ -1,10 +1,12 @@
 const os = require('os');
 const express = require('express');
-const app = express();
 const redis = require('redis');
+
+const app = express();
+
 const redisClient = redis.createClient({
-  host: 'redis',
-  port: 6379
+    host: 'redis',
+    port: 6379
 });
 
 app.get('/', function(req, res) {
@@ -15,6 +17,8 @@ app.get('/', function(req, res) {
         if (isNaN(numVisitsToDisplay)) {
             numVisitsToDisplay = 1;
         }
+
+        redisClient.set('numVisits', numVisitsToDisplay);
 
         res.send(`
         <!DOCTYPE html>
@@ -35,7 +39,12 @@ app.get('/', function(req, res) {
                     display:flex;
                     justify-content:center;
                     align-items:center;
-                    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+                    background:linear-gradient(
+                        135deg,
+                        #0f172a,
+                        #1e293b,
+                        #334155
+                    );
                     color:white;
                 }
 
@@ -102,23 +111,8 @@ app.get('/', function(req, res) {
         </body>
         </html>
         `);
-
-        redisClient.set('numVisits', numVisitsToDisplay);
     });
 });
-```
-
-// app.get('/', function(req, res) {
-//     redisClient.get('numVisits', function(err, numVisits) {
-//         numVisitsToDisplay = parseInt(numVisits) + 1;
-//         if (isNaN(numVisitsToDisplay)) {
-//             numVisitsToDisplay = 1;
-//         }
-//        res.send(os.hostname() +': Number of visits is: ' + numVisitsToDisplay);
-//         numVisits++;
-//         redisClient.set('numVisits', numVisits);
-//     });
-// });
 
 app.listen(3000, function() {
     console.log('Web application is listening on port 3000');
