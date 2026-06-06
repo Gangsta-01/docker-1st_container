@@ -1,0 +1,12 @@
+## Docker compose for test my-app ##
+
+services:
+  redis:
+    image: redis
+
+  web:
+    image: my-app:1.0
+    ports:
+      - "5000:5000"
+    depends_on:
+    - redis
